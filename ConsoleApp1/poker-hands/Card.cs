@@ -1,36 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using StudyingTesting.poker_hands;
 
-namespace StudyingTesting.poker_hands
+public class Card : IComparable<Card>
 {
-    public class Card : IComparable<Card>
+    public int Number { get; set; }
+    public Suit Suit { get; set; }
+
+    public Card(int number, Suit suit)
     {
-        private int number;
-        private Suit suit;
+        Number = number;
+        Suit = suit;
+    }
 
-        public Card(int number, Suit suit)
-        {
-            this.number = number;
-            this.suit = suit;
-        }
+    public override string ToString()
+    {
+        return Suit + "-" + Number;
+    }
 
-        public int Number { get => number; set => number = value; }
-
-        public Suit Suit { get => suit; set => suit = value; }
-
-        public override string ToString()
-        {
-            return suit + "-" + number;
-        }
-
-        public int CompareTo(Card other)
-        {
-            return number.CompareTo(other.number);
-        }
-
-
+    public int CompareTo(Card other)
+    {
+        return Number.CompareTo(other.Number);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudyingTesting.user;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,19 @@ namespace StudyingTesting.users
 {
     public class User
     {
-        private string username;
-        private List<User_Role> roles;
+        public string Username { get; set; }
+        public List<User_Role> Roles { get; set; }
 
-        public List<User_Role> Roles { get => roles; set => roles = value; }
-        public string Username { get => username; set => username = value; }
+        public User(string username, List<User_Role> roles)
+        {
+            Username = username;
+            Roles = roles;
+        }
+
+        public bool CanOpenTable()
+        {
+            return Roles.Contains(User_Role.ADMIN) || Roles.Contains(User_Role.MANAGER);
+        }
     }
+
 }

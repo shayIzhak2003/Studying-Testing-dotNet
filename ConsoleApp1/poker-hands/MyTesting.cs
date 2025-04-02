@@ -1,45 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StudyingTesting.poker_hands;
+using System;
 
-namespace StudyingTesting.poker_hands
+public class MyTesting
 {
-    public class MyTesting
+    public static void RunMe()
     {
-        public static void RunMe()
+        // Provide a valid hand string instead of "Example"
+        string handString = "5D 7H 2H AH 10S";
+
+        // Create the Hand object using the valid hand string
+        Hand hand = new Hand(handString);
+
+        Console.WriteLine("Before sorting:");
+        foreach (Card c in hand.Cards)
         {
-            Card card = new Card(5, Suit.DIAMONDS);
-
-            Console.WriteLine("card=" + card);
-
-            Card card2 = new Card(7, Suit.HEARTS);
-
-            Card card3 = new Card(2, Suit.HEARTS);
-
-
-            Card card4 = new Card(14, Suit.HEARTS);
-
-            Card card5 = new Card(10, Suit.SPADES);
-
-            Card[] cards = { card, card2, card3, card4, card5 };
-
-            Hand hand = new Hand();
-            hand.Cards = cards;
-
-            foreach(Card c in hand.Cards)
-            {
-                Console.WriteLine(c);
-            }
-            hand.Sort();
-            Console.WriteLine("After sorting:");
-            foreach (Card c in hand.Cards)
-            {
-                Console.WriteLine(c);
-            }
-
+            Console.WriteLine(c);
         }
 
+        hand.Sort();
+
+        Console.WriteLine("After sorting:");
+        foreach (Card c in hand.Cards)
+        {
+            Console.WriteLine(c);
+        }
     }
 }
